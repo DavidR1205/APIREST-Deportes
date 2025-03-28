@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post('/result', resultValidator, async (req, res) => {
     try {
-        const { score, ranking, statistic } = req.body;
-        const newResult = await Result.create({ score, ranking, statistic });
+        const { score, ranking, statistic, idRegistration } = req.body;
+        const newResult = await Result.create({ score, ranking, statistic, idRegistration });
         res.status(201).json({ message: 'Resultado creado', newResult });
 
     } catch (error) {
@@ -54,11 +54,12 @@ router.put('/result/:id', async (req, res) => {
             return res.status(404).json({ error: 'ID del resultado no encontrado' });
         }
 
-        const { score, ranking, statistic } = req.body;
+        const { score, ranking, statistic, idRegistration } = req.body;
 
         result.score = score || result.score;
         result.ranking = ranking || result.ranking;
         result.statistic = statistic || result.statistic;
+        result.idRegistration = idRegistration || result.idRegistration;
 
         await result.save();
 

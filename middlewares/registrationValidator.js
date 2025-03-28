@@ -2,12 +2,11 @@ const { body, validationResult } = require('express-validator');
 
 const validRegistration = [
 
-    body('idAtleta')
-
+    body('idAthlete')
         .isInt()
         .withMessage('El idAtleta debe ser un número entero'),
 
-    body('idEvento')
+    body('idEvent')
         .isInt()
         .withMessage('El idEvento debe ser un número entero'),
 
