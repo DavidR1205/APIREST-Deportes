@@ -1,4 +1,9 @@
-const Registration = sequelize.define('Registration', {
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
+const athlete = require('./athleteModels');
+const event = require('./eventModel');
+
+const registration = sequelize.define('Registration', {
     idRegistration: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -8,7 +13,7 @@ const Registration = sequelize.define('Registration', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Athlete,
+            model: 'athletes',
             key: 'idAthlete'
         },
         onDelete: "RESTRICT",
@@ -18,7 +23,7 @@ const Registration = sequelize.define('Registration', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Event,
+            model: 'events',
             key: 'idEvent'
         },
         onDelete: "RESTRICT",
@@ -29,11 +34,25 @@ const Registration = sequelize.define('Registration', {
         allowNull: false,
     }
 }, {
-    tableName: "Registrations",
+    tableName: "registrations",
     timestamps: false
 });
 
-Registration.belongsTo(Athlete, { foreignKey: 'idAthlete' });
-Registration.belongsTo(Event, { foreignKey: 'idEvent' });
+athlete.hasMany(registration, {
+    foreignKey: 'idAthlete'
+});
 
-module.exports = Registration;
+event.hasMany(registration, {
+    foreignKey: 'idEvent'
+});
+
+registration.belongsTo(athlete, {
+    foreignKey: 'idAthlete'
+});
+
+registration.belongsTo(event, {
+    foreignKey: 'idEvent'
+});
+
+
+module.exports = registration;

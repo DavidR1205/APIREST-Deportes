@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-//const athlete = require('./athleteModels');
 
 const event = sequelize.define('Event', {
     idEvent: {
@@ -38,8 +37,6 @@ const event = sequelize.define('Event', {
     tableName: "events",
     timestamps: false,
 });
-Event.hasMany(require('./registration'), { foreignKey: 'idEvent' });
-
 
 module.exports = event;
 /*event.hasMany(athlete, {

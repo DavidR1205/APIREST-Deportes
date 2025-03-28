@@ -44,8 +44,6 @@ const athlete = sequelize.define('Athlete', {
     timestamps: false
 
 
-})
-
-Athlete.hasMany(require('./registration'), { foreignKey: 'idAthlete' });
+});
 
 module.exports = athlete;
