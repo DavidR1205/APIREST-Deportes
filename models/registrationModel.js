@@ -27,3 +27,4 @@ const registration = sequelize.define('Registration', {
 
 
 })
+module.exports = registration;
