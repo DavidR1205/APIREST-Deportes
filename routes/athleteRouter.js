@@ -9,7 +9,7 @@ router.post('/athlete', athleteValidator, async (req, res) => {
     try {
         const { firtsName, lastName, age, weight, height } = req.body;
         const newAthlete = await Athlete.create({ firtsName, lastName, age, weight, height });
-        res.status(201).json({ message: 'Usuario creado', newAthlete });
+        res.status(201).json({ message: 'Atleta creado', newAthlete });
 
     } catch (error) {
         console.error('Error al crear el atleta: ', error);
@@ -19,8 +19,8 @@ router.post('/athlete', athleteValidator, async (req, res) => {
 
 router.get('/athlete', async (req, res) => {
     try {
-        const users = await Athlete.findAll();
-        res.status(200).json(users);
+        const athlete = await Athlete.findAll();
+        res.status(200).json(athlete);
 
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener los atletas' });
@@ -70,3 +70,5 @@ router.put('/athlete/:id', async (req, res) => {
         res.status(500).json({ error: 'Error en el servidor' });
     }
 });
+
+module.exports = router;
