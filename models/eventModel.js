@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
-const athlete = require('./athleteModels');
+//const athlete = require('./athleteModels');
 
 //fecha-lugar
 const event = sequelize.define('Event', {
@@ -20,14 +20,28 @@ const event = sequelize.define('Event', {
         allowNull: false,
     },
 
-    idAthlete: {
-        type: DataTypes.INTEGER,
-        onDelete: "RESTRICT",
-        onUpdate: "RESTRICT",
+    eventName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    modality: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    typeSport: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     
-})
-event.hasMany(athlete, {
+},{
+    tableName: "events",
+    timestamps: false,
+});
+
+module.exports = event;
+/*event.hasMany(athlete, {
     foreignKey: 'idAthlete',
 });
-athlete.belongsTo(event);
+athlete.belongsTo(event);*/
