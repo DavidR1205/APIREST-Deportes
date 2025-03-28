@@ -2,18 +2,6 @@ const express = require('express');
 const sequelize = require('./config/database');
 const app = express();
 const port = 3000;
-
-const Athlete = require('./models/athleteModels');
-const Event = require('./models/eventModel');
-const Registration = require('./models/registrationModel');
-
-// Establecer relaciones aquí (punto central)
-Athlete.hasMany(Registration, { foreignKey: 'idAthlete' });
-Event.hasMany(Registration, { foreignKey: 'idEvent' });
-Registration.belongsTo(Athlete, { foreignKey: 'idAthlete' });
-Registration.belongsTo(Event, { foreignKey: 'idEvent' });
-
-
 const athleteRoutes = require('./routes/athleteRouter');
 const eventRoutes = require('./routes/eventRouter');
 const registrationRoutes = require('./routes/registrationRouter');
