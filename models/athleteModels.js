@@ -4,7 +4,6 @@ const sequelize = require('../config/database');
 
 const athlete = sequelize.define('Athlete', {
 
-    //id, nombre, apellido, edad, altura, peso, deporte
     idAthlete: {
         type: DataTypes.INTEGER,
         primaryKey: true,
