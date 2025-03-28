@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/registration', registrationValidator, async (req, res) => {
     try {
-        const { firtsName, lastName, age, weight, height } = req.body;
+        const { idRegistration, idAthlete, idEvent, registrationDate } = req.body;
         const newRegistration = await Registration.create({ idRegistration, idAthlete, idEvent, registrationDate });
         res.status(201).json({ message: 'Registro creado', newRegistration });
 
