@@ -16,6 +16,17 @@ const validAthlete = [
     body('age')
         .isInt({ min: 18 }),
 
+
+
+    body('weight')
+        .isFloat({ min: 0 }),
+
+
+    body('height')
+        .isFloat({ min: 0 }),
+
+
+
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -23,8 +34,6 @@ const validAthlete = [
         }
         next();
     }
-
-
 
 
 ]

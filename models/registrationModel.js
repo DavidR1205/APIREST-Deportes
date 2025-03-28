@@ -6,7 +6,24 @@ const registration = sequelize.define('Registration', {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-    }
+    },
 
-    
+    idAthlete: {
+        type: DataTypes.INTEGER,
+        onDelete: "RESTRICT",
+        onUpdate: "RESTRICT"
+    },
+
+    idEvent: {
+        type: DataTypes.INTEGER,
+        onDelete: "RESTRICT",
+        onUpdate: "RESTRICT"
+    },
+
+    registrationDate: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+
+
 })
