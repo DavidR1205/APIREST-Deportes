@@ -2,7 +2,6 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 //const athlete = require('./athleteModels');
 
-//fecha-lugar
 const event = sequelize.define('Event', {
     idEvent: {
         type: DataTypes.INTEGER,
@@ -39,6 +38,8 @@ const event = sequelize.define('Event', {
     tableName: "events",
     timestamps: false,
 });
+Event.hasMany(require('./registration'), { foreignKey: 'idEvent' });
+
 
 module.exports = event;
 /*event.hasMany(athlete, {
